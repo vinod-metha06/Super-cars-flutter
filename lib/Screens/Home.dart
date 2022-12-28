@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:super_car/Ui/HomePage.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -21,7 +22,7 @@ class _HomeState extends State<Home> {
         key: scaffoldKey,
         appBar: AppBar(
           leading: IconButton(
-            icon: FaIcon(FontAwesomeIcons.bars),
+            icon: const FaIcon(FontAwesomeIcons.bars),
             onPressed: () {
               if (scaffoldKey.currentState!.isDrawerOpen) {
                 scaffoldKey.currentState!.closeDrawer();
@@ -31,7 +32,7 @@ class _HomeState extends State<Home> {
             },
           ),
         ),
-        drawer: Drawer(),
+        drawer: const Drawer(),
         bottomNavigationBar: NavigationBar(
           destinations: const [
             NavigationDestination(
@@ -51,9 +52,7 @@ class _HomeState extends State<Home> {
           },
         ),
         body: <Widget>[
-          Container(
-            color: Colors.red,
-          ),
+          HomePage(),
           Container(
             color: Colors.blue,
           ),
