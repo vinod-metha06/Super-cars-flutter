@@ -43,25 +43,13 @@ class _HomeState extends State<Home> {
           NavigationDestination(
               icon: Icon(EvaIcons.personOutline), label: "account"),
         ],
-        selectedIndex: _selectedIdex,
+        selectedIndex: currentPageIndex,
         onDestinationSelected: (value) {
-          switch (value) {
-            case 0:
-              
-              break;
-            case 1:
-              
-              break;
-            case 2:
-              
-              break;
-            case :
-              
-              break;
-            default:
-          }
-          print(value);
-          print(_selectedIdex);
+          setState(() {
+            currentPageIndex = value;
+          });
+         print(value);
+          print(currentPageIndex);
         },
       ),
     );
