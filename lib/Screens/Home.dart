@@ -18,40 +18,51 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: FaIcon(FontAwesomeIcons.bars),
-          onPressed: () {
-            if (scaffoldKey.currentState!.isDrawerOpen) {
-              scaffoldKey.currentState!.closeDrawer();
-            } else {
-              scaffoldKey.currentState!.openDrawer();
-            }
+        key: scaffoldKey,
+        appBar: AppBar(
+          leading: IconButton(
+            icon: FaIcon(FontAwesomeIcons.bars),
+            onPressed: () {
+              if (scaffoldKey.currentState!.isDrawerOpen) {
+                scaffoldKey.currentState!.closeDrawer();
+              } else {
+                scaffoldKey.currentState!.openDrawer();
+              }
+            },
+          ),
+        ),
+        drawer: Drawer(),
+        bottomNavigationBar: NavigationBar(
+          destinations: const [
+            NavigationDestination(
+                icon: Icon(EvaIcons.homeOutline), label: "home"),
+            NavigationDestination(
+                icon: Icon(EvaIcons.heartOutline), label: "liked"),
+            NavigationDestination(
+                icon: Icon(EvaIcons.shoppingCartOutline), label: "cart"),
+            NavigationDestination(
+                icon: Icon(EvaIcons.personOutline), label: "account"),
+          ],
+          selectedIndex: currentPageIndex,
+          onDestinationSelected: (value) {
+            setState(() {
+              currentPageIndex = value;
+            });
           },
         ),
-      ),
-      drawer: Drawer(),
-      bottomNavigationBar: NavigationBar(
-        destinations: const [
-          NavigationDestination(
-              icon: Icon(EvaIcons.homeOutline), label: "home"),
-          NavigationDestination(
-              icon: Icon(EvaIcons.heartOutline), label: "liked"),
-          NavigationDestination(
-              icon: Icon(EvaIcons.shoppingCartOutline), label: "cart"),
-          NavigationDestination(
-              icon: Icon(EvaIcons.personOutline), label: "account"),
-        ],
-        selectedIndex: currentPageIndex,
-        onDestinationSelected: (value) {
-          setState(() {
-            currentPageIndex = value;
-          });
-         print(value);
-          print(currentPageIndex);
-        },
-      ),
-    );
+        body: <Widget>[
+          Container(
+            color: Colors.red,
+          ),
+          Container(
+            color: Colors.blue,
+          ),
+          Container(
+            color: Colors.yellow,
+          ),
+          Container(
+            color: Colors.green,
+          )
+        ][currentPageIndex]);
   }
 }
